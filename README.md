@@ -1,4 +1,4 @@
-# HART-Protocol-Internals
+# HART-Protocol-Fundamentals
 An Introduction to HART Protocol. The aim of this project is to help migrate the automation oriented Industry 3.0  infrastructure to IoT enabled Industry 4.0 Infrastructure.
 
 Purpose of this repo: Understanding the HART message format & create ways to interface the device data with upstream IoT network. 
