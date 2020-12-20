@@ -1,8 +1,9 @@
 packet = 'FFFFFFFFFF0686010700000843F0000076'                                   # Incoming Packet from HART transmitter
-print (Packet length " + str(len(packet)) + " nibbles)                                                                      # Print packet length
+print ("Packet length " + str(len(packet)) + " nibbles")                        # Print packet length
 for_check = packet [0:(len(packet)-2)]                                          # Separated data, excluding the checksum byte
 print (for_check)                                                               # print bytestream for checksum calculation
 incoming_checksum = packet [-2:]                                                # Last byte (FF) is incoming checksum
+print ("incoming packet is " + (packet))
 print ("incoming checksum is " + (incoming_checksum))
 
 xor = 0                                                                         # value initiated with 0
