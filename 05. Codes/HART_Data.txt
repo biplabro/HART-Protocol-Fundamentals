@@ -1,0 +1,15 @@
+|PREAMBLE |SB|AD|CM|BC|STAT|---DATA---|CS
+FFFFFFFFFF|06|86|01|07|0000|0843F00000|76
+
+Preamble: index 0:4 
+Start Byte: index 5
+Address: index 6
+Command: index 7
+Byte count: index 8
+Status: index 9:10
+Data: 11:15 (Variable)
+Checksum: index 16
+
+
+
+
