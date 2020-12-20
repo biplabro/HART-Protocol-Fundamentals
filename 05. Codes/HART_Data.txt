@@ -1,6 +1,6 @@
-|PREAMBLE |SB|AD|CM|BC|STAT|---DATA---|CS|
-|0----------------index----------------33|
-FFFFFFFFFF|06|86|01|07|0000|0843F00000|76|
+|_PREAMBLE_|SB|AD|CM|BC|STAT|---DATA---|CS|
+|0----------------index-----------------33|
+|FFFFFFFFFF|06|86|01|07|0000|0843F00000|76|
 
 Preamble: index 0:9 (Static)
 Start Byte: index 10:11 (Static)
