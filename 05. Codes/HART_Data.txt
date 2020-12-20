@@ -9,7 +9,7 @@ Command: index 14:15 (Static)
 Byte count: index 16:17 (Static)
 Status: index 18:21 (Static)
 Data: 22:31 (Variable)
-Checksum: index 32:33 (Variable)
+Checksum: index 32:33 (Variable) python byte id Checksum[-2:]
 
 
 
