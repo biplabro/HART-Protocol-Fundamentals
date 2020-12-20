@@ -1,14 +1,15 @@
-|PREAMBLE |SB|AD|CM|BC|STAT|---DATA---|CS
-FFFFFFFFFF|06|86|01|07|0000|0843F00000|76
+|_PREAMBLE_|SB|AD|CM|BC|STAT|---DATA---|CS|
+|0----------------index-----------------33|
+|FFFFFFFFFF|06|86|01|07|0000|0843F00000|76|
 
-Preamble: index 0:4 
-Start Byte: index 5
-Address: index 6
-Command: index 7
-Byte count: index 8
-Status: index 9:10
-Data: 11:15 (Variable)
-Checksum: index 16
+Preamble: index 0:9 (Static)
+Start Byte: index 10:11 (Static)
+Address: index 12:13 (Static)
+Command: index 14:15 (Static)
+Byte count: index 16:17 (Static)
+Status: index 18:21 (Static)
+Data: 22:31 (Variable)
+Checksum: index 32:33 (Variable)
 
 
 
