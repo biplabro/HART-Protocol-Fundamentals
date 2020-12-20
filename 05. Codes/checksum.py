@@ -12,6 +12,7 @@ checksum = hex (xor)                                                            
 final = checksum[2:4]                                                           # formatting required data
 print (final)                                                                   # print the formatted data
 
+
+
+
 # Final result is 77
-
-
