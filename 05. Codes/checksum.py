@@ -23,5 +23,6 @@ else:
 
 
 
-
-# Final result is 77
+# calculated checksum value is 0x77
+# incoming checksum is 0x76 (for debug purpuse)
+# edit the incoming packet to get "Checksum Match" confirmation
