@@ -1,6 +1,6 @@
 in_bytes = raw_input ("enter incoming bytestream: ")                            # user input syntax python 2.x
 #in_bytes = input ("enter incoming bytestream: ")                                # user input syntax python 3.x
-#in_bytes = 'FFFFFFFFFF0686010700000843F0000076'                                # Incoming Packet from HART transmitter
+#in_bytes = 'FFFFFFFFFF0686010700000843F0000076'                                 # Incoming Packet from HART transmitter
 
 ########## segregation of information #################
 packet_len = len(in_bytes)/2                                                    # length in bytes (2 nibbles each)
@@ -13,9 +13,9 @@ data_bytes_count = len(in_bytes[22:-2])/2
 for_check = in_bytes [0:(len(in_bytes)-2)]                                      # Separated string, excluding the checksum byte
                                                
 ############## debugging information #################
-print ("Incoming packet is: " + (in_bytes))
-print ("Packet length is: " + str(packet_len) + " Bytes")                       # Print packet length
-print ("Slave address is: " + (slave_id))                                       # int to string conversion & concatenation
+print ("Incoming packet is: " + (in_bytes))                                     # Print packet length
+print ("Packet length is: " + str(packet_len) + " Bytes")                       # int to string conversion & concatenation
+print ("Slave address is: " + (slave_id))                                       
 print ("Command code is: " + (command_code))
 print ("Data Bytes are: " + (data_bytes))
 print ("Total number of Data Bytes is: " + str(data_bytes_count) + " Bytes")    
