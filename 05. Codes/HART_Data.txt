@@ -2,14 +2,23 @@
 |0----------------index-----------------33|
 |FFFFFFFFFF|06|86|01|07|0000|0843F00000|76|
 
-Preamble: index 0:9 (Static)
-Start Byte: index 10:11 (Static)
-Address: index 12:13 (Static)
+FFFFFFFFFF077A000E0040FE13030505010508003236023A
+FFFFFFFFFF073F031A004040806000274080600039C1B7E00006C2DC800039BD7A00007A
+FFFFFFFFFF0F76331A00480C0000000003002740806000002740806000002740806000EB
+FFFFFFFFFF0F89480A00400000080002001367D4
+
+
+
+
+
+Preamble: index 0:9 (Static index)
+Start Byte: index 10:11 (Static index)
+Address: index 12:13 (Static index)
 Command: index 14:15 (Static)
-Byte count: index 16:17 (Static)
-Status: index 18:21 (Static)
-Data: 22:31 (Variable)
-Checksum: index 32:33 (Variable) python byte id `Checksum[-2:]`
+Byte count: index 16:17 (Static index)
+Status: index 18:21 (Static index)
+Data: 22:31 (Variable index)
+Checksum: index 32:33 (Static reverse index)
 
 
 
