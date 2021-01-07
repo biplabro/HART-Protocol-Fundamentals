@@ -1,14 +1,18 @@
 # Using the script:
 # 'python data_upstream.py' for normal operation
 # 'python data_upstream.py --debug' for debug mode
-# Fully compatible with python2.x, 
-
+# Tested & fully compatible with python2.x, python3.x
+# serial device can be interfaced as and when required, provisions given in code
 
 import time																		# required for delay function
 import sys																		# required for fetching cmdline argument
+# import serial_library module															# required for serial device interface
 
 dummy_data = open('HART_Data.txt', 'r')                                        	# open datafile read-only, py script & datafile in same directory
 lines = dummy_data.readlines()													# read all the lines, enumerate line numbers
+
+# serial device configuration (optional)
+# serial setup
 
 def upstream_data (in_bytes, script_arg):										# function for data interpretation & error checking module
 
@@ -96,11 +100,12 @@ def upstream_data (in_bytes, script_arg):										# function for data interpret
 ##################################_Main Loop_###################################
 ##################_Infinite loop for embedded applications_#####################
 while True:
+# Read from serial device & store the data into data_fed variable (optional)
 	try:																		# try: except: condition, enabling interrupt
 		for i in range(8):														# 8 refers to the first 8 lines of the input.txt file, variable
 			if (len(sys.argv) == 1):											# running script in minimal info mode
 				data_fed = str(lines[i])										# line from the input.txt file
-				print ("Reading information instance: " + str(i+1))
+				print ("Processing information: instance " + str(i+1))
 				upstream_data (data_fed, 0)										# feeding the bytestream into upstream_data(), no --debug flag
 				time.sleep(1)													# delay between reading two instances
 
@@ -108,7 +113,7 @@ while True:
 				cmdline_arg = sys.argv[1]
 				if (cmdline_arg == "--debug"):									# enabling --debug mode
 					data_fed = str(lines[i])									# line from the input.txt file
-					print ("Reading information instance: " + str(i+1) + " with --Debug mode")
+					print ("Processing information: instance " + str(i+1) + " with --Debug mode")
 					upstream_data (data_fed, cmdline_arg)						# feeding the bytestream into upstream_data(), with --debug flag
 					time.sleep(3)
 				else:
