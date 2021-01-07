@@ -1,12 +1,17 @@
 import time
 import sys
-
+'''
 debug_flag = ""
 debug_flag = sys.argv[1:]
 print sys.argv[1:]
 print debug_flag
+'''
 
-def upstream_data (in_bytes):
+dummy_data = open('HART_Data.txt', 'r')                                            # open datafile readonly, py script & datafile in same directory
+lines = dummy_data.readlines()
+
+
+def upstream_data (in_bytes, script_arg):
 
 	########## segregation of information #################
 	packet_len = len(in_bytes)/2                                                    # length in bytes (2 nibbles each)
@@ -14,8 +19,8 @@ def upstream_data (in_bytes):
 	slave_id = in_bytes[12:14]                                                      # refer HART_data.txt for index
 	command_code = in_bytes[14:16]                                                  
 	incoming_byte_count = in_bytes[16:18]
-	data_bytes = in_bytes[22:-2]
-	data_bytes_count = len(in_bytes[22:-2])/2                                       
+	data_bytes = in_bytes[22:-3]
+	data_bytes_count = len(in_bytes[22:-3])/2                                       
 	for_check = in_bytes [0:(len(in_bytes)-3)]                                      # Separated string, excluding the checksum byte
 		                                       
 	############# error check module0 (checksum based) ###############
@@ -49,40 +54,58 @@ def upstream_data (in_bytes):
 	################# error check module3 (? based) ################
 
 	############## debugging information #################
-	if (sys.argv[1:] == "--debug"):
-			print ("Incoming packet is: " + (in_bytes))                                     # Print packet length
-			print ("Packet length is: " + str(packet_len) + " Bytes")                       # int to string conversion & concatenation
-			print ("Slave address is: " + (slave_id))                                       
-			print ("Command code is: " + (command_code))
-			print ("Data Bytes are: " + (data_bytes))
-			print ("Total number of Data Bytes is: " + str(data_bytes_count) + " Bytes")    
-			print ("Checksum input is: " + (for_check))                                     # print bytestream for checksum calculation
-			print ("Incoming checksum is: " + (incoming_checksum))
-			print ("calculated checksum is: " + (calculated_checksum))                       
-			print ("Incoming byte count is: " + (incoming_byte_count))
-			print ("calculated byte count is " + (calculated_byte_count)) 
-
-			if (cs == "01"):
-				print ("Error: Checksum Mismatch")
-						                           
-			if (bc == "01"):
-				print ("Warning: Byte count Mismatch")
+	if (script_arg == "--debug"):
+			print ("Incoming packet: " + (in_bytes))                                     # Print packet length
+			print ("Debug information")
+			print ("Packet length: " + str(packet_len) + " Bytes")                       # int to string conversion & concatenation
+			print ("Slave address: " + (slave_id))                                       
+			print ("Command code: " + (command_code))
+			print ("Data Bytes: " + (data_bytes))
+			print ("Total number of Data Bytes: " + str(data_bytes_count) + " Bytes")    
+			print ("Checksum input: " + (for_check))                                     # print bytestream for checksum calculation
+			print ("Incoming checksum: " + (incoming_checksum))
+			print ("calculated checksum: " + (calculated_checksum))                       
+			print ("Incoming byte count: " + (incoming_byte_count))
+			print ("calculated byte count: " + (calculated_byte_count)) 
 
 	################# formatted upstream data ####################
-	upstream_data = str(slave_id + command_code + data_bytes + cs + bc)             # formatted string with checksum & byte count flag for upstream
-	print ("Upstream data is: " + upstream_data)
-	print ("\r \n")
+	upstream_data = str(slave_id + command_code + data_bytes + cs + bc)     	# formatted string with checksum & byte count flag for upstream
 
-dummy_data = open('HART_Data.txt', 'r')                                            # open datafile readonly, py script & datafile in same directory
-lines = dummy_data.readlines()
+	print ("\r \n")
+	if (cs == "01"):
+		print ("Error: Checksum Mismatch")
+				                           
+	if (bc == "01"):
+		print ("Warning: Byte count Mismatch")
+
+	if (cs == "00") and (bc == "00"):
+		print ("Valid Datastream")
+	print ("Upstream data: " + upstream_data)
+	print ("----------------------------------------------")
 
 while True:
     try:
 		for i in range(8):
-			data_fed = str(lines[i])
-			print ("Reading line number: " + str(i+1))
-			upstream_data (data_fed)
-			time.sleep(2)
+			if (len(sys.argv) == 1):
+				data_fed = str(lines[i])
+				print ("Reading information instance: " + str(i+1))
+				upstream_data (data_fed, 0)
+				time.sleep(2)				
+
+			if (len(sys.argv) == 2):	
+				cmdline_arg = sys.argv[1]
+				if (cmdline_arg == "--debug"):
+					data_fed = str(lines[i])
+					print ("Reading information instance: " + str(i+1) + " with --Debug mode")
+					upstream_data (data_fed, cmdline_arg)
+					time.sleep(2)
+				else:
+					print ("Invalid argument")
+					time.sleep(2)
+
+			if ((len(sys.argv) >= 3)):
+				print ("Invalid argument")
+				time.sleep(2)
 
     except KeyboardInterrupt:
             print 'Interrupted'
