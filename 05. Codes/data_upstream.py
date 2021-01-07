@@ -96,7 +96,7 @@ while True:
 				data_fed = str(lines[i])
 				print ("Reading information instance: " + str(i+1))
 				upstream_data (data_fed, 0)
-				time.sleep(2)				
+				time.sleep(1)				
 
 			if (len(sys.argv) == 2):	
 				cmdline_arg = sys.argv[1]
@@ -104,12 +104,14 @@ while True:
 					data_fed = str(lines[i])
 					print ("Reading information instance: " + str(i+1) + " with --Debug mode")
 					upstream_data (data_fed, cmdline_arg)
-					time.sleep(2)
+					time.sleep(3)
 				else:
 					print ("Invalid argument")
 					time.sleep(2)
 
-
+			if ((len(sys.argv) >= 3)):
+				print ("Invalid argument")
+				time.sleep(2)
 
     except KeyboardInterrupt:
             print 'Interrupted'
