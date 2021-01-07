@@ -109,9 +109,7 @@ while True:
 					print ("Invalid argument")
 					time.sleep(2)
 
-			if ((len(sys.argv) >= 3)):
-				print ("Invalid argument")
-				time.sleep(2)
+
 
     except KeyboardInterrupt:
             print 'Interrupted'
