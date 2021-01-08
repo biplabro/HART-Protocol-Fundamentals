@@ -11,6 +11,8 @@ import sys									# required for fetching cmdline argument
 # import serial_library module	
 # import serial, time, io, datetime
 # from serial import Serial							# required for serial device interface
+# from ML_script_file import ML_function					# import files & func without file extensions
+
 
 dummy_data = open('HART_Data.txt', 'r')                                        	# open datafile read-only, py script & datafile in same directory
 lines = dummy_data.readlines()							# read all the lines, enumerate line numbers
