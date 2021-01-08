@@ -5,7 +5,6 @@
 # Tested & fully compatible with python2.x, python3.x
 # serial device can be interfaced as and when required, provisions given in code
 # ==============================================================================
-<<<<<<< HEAD
 
 import time									# required for delay function
 import sys									# required for fetching cmdline argument
@@ -13,15 +12,6 @@ import sys									# required for fetching cmdline argument
 # import serial, time, io, datetime
 # from serial import Serial							# required for serial device interface
 # from ML_script_file import ML_function					# import files & func without file extensions
-
-=======
-
-import time									# required for delay function
-import sys									# required for fetching cmdline argument
-# import serial_library module	
-# import serial, time, io, datetime
-# from serial import Serial							# required for serial device interface
->>>>>>> main
 
 dummy_data = open('HART_Data.txt', 'r')                                        	# open datafile read-only, py script & datafile in same directory
 lines = dummy_data.readlines()							# read all the lines, enumerate line numbers
@@ -31,7 +21,6 @@ lines = dummy_data.readlines()							# read all the lines, enumerate line number
 '''
 addr0 = "/dev/ttyS0"								# serial port for the interface
 baud = 9600									# baud rate of the instrument
-<<<<<<< HEAD
 
 ser = serial.Serial(                    					# serial port hardware configuration, serial object
     port = addr0,\
@@ -42,18 +31,6 @@ ser = serial.Serial(                    					# serial port hardware configuratio
     timeout=0)
 '''
 
-=======
-
-ser = serial.Serial(                    					# serial port hardware configuration, serial object
-    port = addr0,\
-    baudrate = baud,\
-    parity=serial.PARITY_NONE,\
-    stopbits=serial.STOPBITS_ONE,\
-    bytesize=serial.EIGHTBITS,\
-    timeout=0)
-'''
-
->>>>>>> main
 def upstream_data (in_bytes, script_arg):					# function for data interpretation & error checking module
 
 	############### segregation of information #######################
